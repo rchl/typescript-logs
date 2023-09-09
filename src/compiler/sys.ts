@@ -892,9 +892,9 @@ namespace ts {
         };
 
         function watchFile(fileName: string, callback: FileWatcherCallback, pollingInterval: PollingInterval, options: WatchOptions | undefined): FileWatcher {
-            // sysLog(`watchOptions:: ${JSON.stringify(options, undefined, 2)}::`);
             options = updateOptionsForWatchFile(options, useNonPollingWatchers);
             const watchFileKind = Debug.checkDefined(options.watchFile);
+            sysLog(`watchFile::fileName:: ${fileName}::watchFileKind:: ${watchFileKind}`);
             switch (watchFileKind) {
                 case WatchFileKind.FixedPollingInterval:
                     return pollingWatchFile(fileName, callback, PollingInterval.Low, /*options*/ undefined);
