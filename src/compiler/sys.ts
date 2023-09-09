@@ -1735,22 +1735,26 @@ namespace ts {
             }
 
             function fsWatchWorker(
-                fileOrDirectory: string,
-                recursive: boolean,
-                callback: FsWatchCallback,
+                _fileOrDirectory: string,
+                _recursive: boolean,
+                _callback: FsWatchCallback,
             ) {
                 // Node 4.0 `fs.watch` function supports the "recursive" option on both OSX and Windows
                 // (ref: https://github.com/nodejs/node/pull/2649 and https://github.com/Microsoft/TypeScript/issues/4643)
-                const start = timestamp();
-                const w = _fs.watch(
-                    fileOrDirectory,
-                    fsSupportsRecursiveFsWatch ?
-                        { persistent: true, recursive: !!recursive } : { persistent: true },
-                    callback
-                );
-                const elapsed = timestamp() - start;
-                sysLog(`fs.watch:: Elapsed:: ${elapsed}ms ::fileOrDirectory ${fileOrDirectory}:: fsSupportsRecursiveFsWatch: ${fsSupportsRecursiveFsWatch}`);
-                return w;
+                // const start = timestamp();
+                // const w = _fs.watch(
+                //     fileOrDirectory,
+                //     fsSupportsRecursiveFsWatch ?
+                //         { persistent: true, recursive: !!recursive } : { persistent: true },
+                //     callback
+                // );
+                // const elapsed = timestamp() - start;
+                // sysLog(`fs.watch:: Elapsed:: ${elapsed}ms ::fileOrDirectory ${fileOrDirectory}:: fsSupportsRecursiveFsWatch: ${fsSupportsRecursiveFsWatch}`);
+                // return w;
+                return {
+                    close() {},
+                    on() {}
+                };
             }
 
             function readFileWorker(fileName: string, _encoding?: string): string | undefined {
