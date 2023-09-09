@@ -1,0 +1,1 @@
+{"version":3,"file":"dynamicImportCompat.js","sourceRoot":"","sources":["../../src/dynamicImportCompat/dynamicImportCompat.ts"],"names":[],"mappings":";AAAA,IAAU,EAAE,CAEX;AAFD,WAAU,EAAE;IAAC,IAAA,MAAM,CAElB;IAFY,WAAA,MAAM;QACF,oBAAa,GAAG,CAAC,EAAU,EAAE,EAAE,CAAC,MAAM,CAAC,EAAE,CAAC,CAAC;IAC5D,CAAC,EAFY,MAAM,GAAN,SAAM,KAAN,SAAM,QAElB;AAAD,CAAC,EAFS,EAAE,KAAF,EAAE,QAEX"}
