@@ -1749,7 +1749,7 @@ namespace ts {
                     callback
                 );
                 const elapsed = timestamp() - start;
-                sysLog(`fs.watch:: Elapsed:: ${elapsed}ms`);
+                sysLog(`fs.watch:: Elapsed:: ${elapsed}ms ::fileOrDirectory ${fileOrDirectory}:: fsSupportsRecursiveFsWatch: ${fsSupportsRecursiveFsWatch}`);
                 return w;
             }
 
