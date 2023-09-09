@@ -2,7 +2,7 @@ import del from "del";
 import fs from "fs";
 import os from "os";
 import path from "path";
-import mkdirP from "mkdirp";
+// import mkdirP from "mkdirp";
 import log from "fancy-log";
 import cmdLineOptions from "./options.mjs";
 import { exec } from "./utils.mjs";
@@ -153,8 +153,8 @@ export async function runConsoleTests(runJs, defaultReporter, runInParallel, _wa
 
 export async function cleanTestDirs() {
     await del([localBaseline, localRwcBaseline]);
-    mkdirP.sync(localRwcBaseline);
-    mkdirP.sync(localBaseline);
+    // mkdirP.sync(localRwcBaseline);
+    // mkdirP.sync(localBaseline);
 }
 
 /**
