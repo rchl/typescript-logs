@@ -894,7 +894,7 @@ namespace ts {
         function watchFile(fileName: string, callback: FileWatcherCallback, pollingInterval: PollingInterval, options: WatchOptions | undefined): FileWatcher {
             options = updateOptionsForWatchFile(options, useNonPollingWatchers);
             const watchFileKind = Debug.checkDefined(options.watchFile);
-            sysLog(`watchFile::fileName:: ${fileName}::watchFileKind:: ${watchFileKind}`);
+            // sysLog(`watchFile::fileName:: ${fileName}::watchFileKind:: ${watchFileKind}`);
             switch (watchFileKind) {
                 case WatchFileKind.FixedPollingInterval:
                     return pollingWatchFile(fileName, callback, PollingInterval.Low, /*options*/ undefined);
@@ -1741,12 +1741,16 @@ namespace ts {
             ) {
                 // Node 4.0 `fs.watch` function supports the "recursive" option on both OSX and Windows
                 // (ref: https://github.com/nodejs/node/pull/2649 and https://github.com/Microsoft/TypeScript/issues/4643)
-                return _fs.watch(
+                const start = timestamp();
+                const w = _fs.watch(
                     fileOrDirectory,
                     fsSupportsRecursiveFsWatch ?
                         { persistent: true, recursive: !!recursive } : { persistent: true },
                     callback
                 );
+                const elapsed = timestamp() - start;
+                sysLog(`fs.watch:: Elapsed:: ${elapsed}ms`);
+                return w;
             }
 
             function readFileWorker(fileName: string, _encoding?: string): string | undefined {
